@@ -1,0 +1,186 @@
+<!-- Client side inventory management system. Author: Abhishek Sharma
+	 This page has not been optimized                                --!>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Organic Inventory Management System </title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="js/jquery1.js"></script>
+  <script type="text/javascript" src="js/organicMart.js"> </script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+  <meta name ="viewport" content = "width=device-width, initial-scale=1">
+</head>
+
+<body>
+<!-- Modals -->
+<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Milk from Free Range Cows</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="Pictures/cow2.jpg" alt="calf with mom">
+        Cow is like our mother, we shouldn't lock her up!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="project2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel2">Cage Free Eggs</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="Pictures/egg2.jpg" alt="Free Range Chicken">
+        Caged chickens develop harmful hormones due to fear, this will enter your body through their eggs!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="displayHeading ">OrganicMart Inventory Systems</h1>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="displayHeading">Display Area</h3>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12 display2" id="disp2"> 
+			<p> </p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12 display1" id="disp1">
+		</div>
+	</div>
+	
+	<div class="row">
+	 	<div class="col-md-3 bordering">
+			<h3 class="taskHead">Scan To Stock</h3>
+			<h4>Enter Barcode</h4>
+			
+			<select id="barcode" name="barcode">
+				<option>Select</option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+				<option value="2210">Eggplant</option>
+				<option value="2220">Roma Tomato</option>
+				<option value="2221">Tomato with Shrub</option>
+				<option value="2240">Yellow Onion</option>
+				<option value="2241">Sweet Onion</option>
+				<option value="2250">Garlic</option>
+				<option value="3110">Apples</option>
+				<option value="3120">Banana</option>
+				<option value="3130">Grapes</option>
+			</select>
+			
+			<h4>Quantity </h4>
+			<input id="quant" name="quant">
+			<select id="type">
+                <option>box</option>
+                <option>lb</option>
+			</select>
+			<br><br>
+			<button id="b1" type="button" onclick="addStock()" value="stock">
+					         Stock</button>
+
+		</div>
+		<div class="col-md-3 bordering">
+			<h3 class="taskHead">Sales Register</h3>
+			<h4>Scan Barcode</h4>
+			<select id="barcode1" name="barcode1">
+			    <option> Select </option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+				<option value="2210">Eggplant</option>
+				<option value="2220">Roma Tomato</option>
+				<option value="2221">Tomato with Shrub</option>
+				<option value="2240">Yellow Onion</option>
+				<option value="2241">Sweet Onion</option>
+				<option value="2250">Garlic</option>
+				<option value="3110">Apples</option>
+				<option value="3120">Banana</option>
+				<option value="3130">Grapes</option>
+			</select>
+			<h4>Quantity</h4>
+			<input id="quant1" name="quant1">
+			<br><br>
+			<button id="b2" type="button" onclick="sell()" value="Sell">
+					Sell</button>
+		</div>
+		<div class="col-md-3 bordering2">
+			<h3 class="taskHead">Query</h3>
+			<h4>Scan Barcode</h4>
+			<select id="barcode3" name="barcode3">
+				<option> Select</option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+				<option value="2210">Eggplant</option>
+				<option value="2220">Roma Tomato</option>
+				<option value="2221">Tomato with Shrub</option>
+				<option value="2240">Yellow Onion</option>
+				<option value="2241">Sweet Onion</option>
+				<option value="2250">Garlic</option>
+				<option value="3110">Apples</option>
+				<option value="3120">Banana</option>
+				<option value="3130">Grapes</option>
+			</select>
+			<br><br>
+			<button id="b3" type="button" onclick="query()" value="Query">
+							Query</button>
+
+		</div>
+	</div>		
+	
+	<div class="row">
+		<div class="col-md-6">
+			<figure>
+				<img class="img-responsive" src="Pictures/cow1.jpg" alt="Cowsiee" data-toggle="modal" data-target="#project1">
+					<figcaption>	
+						<h3 style="text-align:center">Free Range Cow Milk</h3>
+					</figcaption>
+			</figure>
+		</div>
+		<div class="col-md-6">
+			<figure>
+				<img class="img-responsive" src="Pictures/egg1.jpg" alt="Wallaby" data-toggle="modal" data-target="#project2"/>
+				<figcaption>
+					<h3 style="text-align:center">Free Range Eggs</h3>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+</div>								
+</body>
+</html>
