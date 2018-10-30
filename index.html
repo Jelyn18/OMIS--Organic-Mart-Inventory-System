@@ -1,0 +1,275 @@
+<!-- Client side inventory management system. Author: Abhishek Sharma
+     This page has been Optimized 									 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Organic Inventory Management System </title>
+  <link rel="stylesheet" href="css/final.min.css">
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+	<link href="css/zocial.css" rel="stylesheet" />
+  <script type="text/javascript" src="js/Final1.min.js"> </script>
+  <meta charset="utf-8">
+  <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+  <meta name ="viewport" content = "width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<!-- bxSlider Javascript file -->
+	<script src="js/jquery.bxslider.js"></script>
+	<!-- bxSlider CSS file -->
+<script>
+		$(document).ready(function(){
+	    $('#shake').bxSlider();
+	});
+	</script>
+
+	    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+<!-- Modals -->
+<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Milk from Free Range Cows</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="Img/cowSmall.jpg" srcset="Img/cowSmall.jpg 500w, Img/cowLarge.jpg 1000w, Img/cowLarge2.jpg 1500w" alt="calf with mom">
+        Cow is like our mother, we shouldn't lock her up!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="project2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel2">Cage Free Eggs</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="Img/chickenSmall.jpg" srcset="Img/chickenSmall.jpg 500w, Img/chickenLarge1.jpg 1000w, Img/chickenLarge2.jpg 1500w" alt="Free Range Chicken">
+        Caged chickens develop harmful hormones due to fear, this will enter your body through their eggs!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container"> <!-- All of my elements are inside the container clas -->
+
+	<div class="row">   <!-- rows cover 100% width of ViewPort-->
+		<div class="col-md-12"> <!-- col-md-x covers x number of parts of view port, max being 12-->
+			<h1 class="displayHeading ">OrganicMart Inventory Systems</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="displayHeading">Display Area</h3>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 display2" id="disp2">
+			<p> </p>
+		</div>
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12 display1" id="disp1">
+		</div>
+	</div>
+
+	<div class="row" >
+	 	<div class="col-md-3 bordering" >
+			<h3 class="taskHead">Add To Stock</h3>
+			<h4 >Select Item</h4>
+
+			<select id="barcode" name="barcode">
+				<option>Select</option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+
+			</select>
+
+			<h4>Quantity </h4>
+			<input id="quant" name="quant">
+			<select id="type">
+                <option>box</option>
+                <option>lbs</option>
+			</select>
+			<button id="b1" type="button" onclick="addStock()" value="stock">
+					         Stock</button>
+
+		</div>
+		<div class="col-md-3 bordering">
+			<h3 class="taskHead">Sales Register</h3>
+			<h4>Select Item</h4>
+			<select id="barcode1" name="barcode1">
+			    <option> Select </option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+
+			</select>
+			<h4>Quantity</h4>
+			<input id="quant1" name="quant1"><br>
+			<button id="b2" type="button" onclick="sell()" value="Sell">
+					Sell</button>
+		</div>
+		<div class="col-md-3 bordering2">
+			<h3 class="taskHead">Query</h3>
+			<h4>Select Item</h4>
+			<select id="barcode3" name="barcode3">
+				<option> Select</option>
+				<option value="9801">Eggs 1 dozen</option>
+				<option value="9802">Eggs 2 dozen</option>
+				<option value="98018">Eggs 18 counts</option>
+				<option value="4301">Milk 1 gallon</option>
+				<option value="4302">Milk 2 gallon</option>
+
+			</select><br>
+			<button id="b3" type="button" onclick="query()" value="Query">
+							Query</button>
+	        </div>
+	</div>
+<br>
+
+
+
+
+
+<!-- Applying Modals to the following elements -->
+	<div class="row">
+		<div class="col-md-6">
+			<figcaption>
+									<h3 style="text-align:center">Free Range Cow Milk</h3>
+								</figcaption>
+                           <figure>
+			<a class="menu_links" onclick="displayData(11,1,0,'A')" onmouseover="" style="cursor: pointer;">
+
+				<img class="round-now img-responsive" src="Img/cow2Small.jpg" srcset="Img/cow2Small.jpg 500w, Img/cow2Large.jpg 1000w, Img/cow2Large2.jpg 1500w" alt="Cowsiee" data-toggle="modal" data-target="#project1">
+					</a>
+
+			</figure>
+		</div>
+		<div class="col-md-6">
+			<figcaption>
+				<h3 style="text-align:center">Free Range Eggs</h3>
+
+			</figcaption>
+			<figure>
+			<a class="menu_links" onclick="displayData(11,1,0,'A')" onmouseover="" style="cursor: pointer;">
+
+				<img class="round-now img-responsive" src="Img/eggSmall.jpg" srcset="Img/eggSmall.jpg 500w, Img/eggLarge.jpg 1000w, Img/eggLarge2.jpg 1500w" alt="Wallaby" data-toggle="modal"
+   									 data-target="#project2"/>
+</a>
+
+			</figure>
+		</div>
+	</div>
+   <div class="row">
+				<div style="text-align:center" class="col-md-12">
+<br><br><br>
+
+<h3>Gallery </h3>
+			<ul id="shake" style="text-align:center">
+			    <li> <img class="round-no"  src ="Img/fruits.jpg"> </li>
+			    <li> <img class="round-no" src ="Img/grains.jpg"> </li>
+			    <li> <img class="round-no" src ="Img/legumes.jpg"> </li>
+			    <li> <img class="round-no" src ="Img/nuts.jpg"> </li>
+					<li> <img class="round-no"  src ="Img/vegetables.jpg"> </li>
+			</ul>
+
+		</div>
+
+	</div>
+	<div id="react-container" style="margin-bottom:270px; text-align:center;"></div>
+</div>
+<div><p></p>
+</div>
+
+	<script type="text/babel">
+
+
+
+    class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  render() {
+    return (
+      <div >
+        <h3>Grocery List</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            value={this.state.text}
+          />
+          <button>
+            Add #{this.state.items.length + 1}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.state.text.length) {
+      return;
+    }
+    const newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState(prevState => ({
+      items: prevState.items.concat(newItem),
+      text: ''
+    }));
+  }
+}
+
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, document.getElementById('react-container'));
+
+</script>
+
+</body>
+</html>
